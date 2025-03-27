@@ -1,0 +1,381 @@
+<div class="main-content">
+    <div class="page-content">
+        <div class="container-fluid">
+            <!-- <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                        <h4 class="mb-sm-0">Dashboard</h4>
+                        <div class="page-title-right">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Inicio</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <button type="button" (click)="verDiario()" style="background-color: #628DC2;color:white"
+                class="btn  btn-label rounded-pill"><i
+                    class=" bx bx-filter-alt label-icon align-middle rounded-pill fs-16 me-2"></i> Ingreso
+                Diario</button> &nbsp;
+            <button type="button" (click)="verAnual()" style="background-color: #628DC2;color:white"
+                class="btn  btn-label rounded-pill"><i
+                    class=" bx bx-filter-alt label-icon align-middle rounded-pill fs-16 me-2"></i> Ingreso
+                Anual</button> &nbsp;
+            <button type="button" (click)="verConceptos()" style="background-color: #628DC2;color:white"
+                class="btn  btn-label rounded-pill text-end"><i
+                    class=" bx bx-filter-alt label-icon align-middle rounded-pill fs-16 me-2"></i>
+                Rubros</button>&nbsp;
+            <button type="button" (click)="verTupa()" style="background-color: #628DC2;color:white"
+                class="btn  btn-label rounded-pill text-end"><i
+                    class=" bx bx-filter-alt label-icon align-middle rounded-pill fs-16 me-2"></i>
+                TUPA / TUSNE</button>&nbsp;
+            <button type="button" (click)="verMulta()" style="background-color: #628DC2;color:white"
+                class="btn  btn-label rounded-pill text-end"><i
+                    class=" bx bx-filter-alt label-icon align-middle rounded-pill fs-16 me-2"></i>
+                Multas</button>&nbsp;
+            <button type="button" (click)="cerrarSesion()" style="background-color: #E95C5D;color:white"
+                class="btn  btn-label rounded-pill text-end"><i
+                    class=" bx bx-log-out-circle label-icon align-middle rounded-pill fs-16 me-2"></i> Cerrar
+                Sesión</button>
+            <br><br>
+            <div *ngIf="conceptoShow" class="col-md-12">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header align-items-center d-flex">
+                                <h4 class="card-title mb-0 flex-grow-1">Rubros por año</h4>
+                                <div class="col-md-3">
+                                    <select class="form-select" [(ngModel)]="p_anio_concepto" (change)="conceptos()">
+                                        <option value="2025">2025</option>
+                                        <option value="2024">2024</option>
+                                        <option value="2023">2023</option>
+                                        <option value="2022">2022</option>
+                                        <option value="2021">2021</option>
+                                        <option value="2020">2020</option>
+                                        <option value="2019">2019</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div class="card-body">
+                                <apx-chart *ngIf="conceptoShow" [series]="conceptosOptions.series"
+                                    [chart]="conceptosOptions.chart" [xaxis]="conceptosOptions.xaxis"
+                                    [stroke]="conceptosOptions.stroke" [dataLabels]="conceptosOptions.dataLabels"
+                                    [yaxis]="conceptosOptions.yaxis" [labels]="conceptosOptions.labels"
+                                    [legend]="conceptosOptions.legend" [title]="conceptosOptions.title"
+                                    [subtitle]="conceptosOptions.subtitle"></apx-chart>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header align-items-center d-flex">
+                                <h4 class="card-title mb-0 flex-grow-1">Rubros por día</h4>
+                                <div class="col-md-3">
+                                    <input type="date" class="form-control" [(ngModel)]="dia_ini_concepto"
+                                        (change)="conceptoMonto()">
+                                </div> &nbsp; - &nbsp;
+                                <div class="col-md-3">
+                                    <input type="date" class="form-control" [(ngModel)]="dia_fin_concepto"
+                                        (change)="conceptoMonto()">
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <apx-chart *ngIf="conceptoShow" [series]="conceptoMontoOptions.series"
+                                    [chart]="conceptoMontoOptions.chart" [dataLabels]="conceptoMontoOptions.dataLabels"
+                                    [plotOptions]="conceptoMontoOptions.plotOptions"
+                                    [xaxis]="conceptoMontoOptions.xaxis"></apx-chart>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div *ngIf="diarioShow" class="row mb-3">
+                <div class="col-md-2">
+                    <div>
+                        <label class="form-label">Desde</label>
+                        <input type="date" class="form-control" [(ngModel)]="p_dia">
+                    </div>
+                </div>
+                <div class=" col-md-2">
+                    <div>
+                        <label class="form-label">Hasta</label>
+                        <input type="date" class="form-control" [(ngModel)]="p_dia_fin">
+                    </div>
+                </div>
+                <div class=" col-md-2">
+                    <div>
+                        <label class="form-label">Tipo Deuda</label>
+                        <select class="form-control" [(ngModel)]="p_tipo_dia">
+                            <option value="0">Todos</option>
+                            <option value="1">Ordinario</option>
+                            <option value="2">Fiscalizado</option>
+                        </select>                        
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <div>
+                        <br>
+                        <button type="button" (click)="loadBarByDay()" class="btn mt-2"
+                            style="background-color: #628DC2;color:white"> Buscar</button>
+                    </div>
+                </div>
+                <div class="col-xxl-3 col-md-6">
+                    <div><br><br>
+                        <h2>Total ingreso diario: {{totalDia | number : '2.0-2'}}</h2>
+
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="diarioShow" class="row">
+                <div *ngFor="let data of dataDia" class="col-xl-3">
+                    <!-- card -->
+                    <div class="card card-animate">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <div class="flex-grow-1">
+                                    <p class="text-uppercase fw-medium text-muted text-truncate fs-13">{{data.desrub}}
+                                    </p>
+                                    <h4 class="fs-22 fw-semibold mb-3">S/.<span class="counter-value"
+                                            data-target="{{data.monpag}}">{{data.monpag | number : '2.0-2' }}</span>
+                                    </h4>
+                                </div>
+                                <div class="avatar-sm flex-shrink-0">
+                                    <span class="avatar-title bg-success-subtle rounded fs-3">
+                                        <i class="bx bx-dollar-circle text-success"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div><!-- end card body -->
+                        <div class="animation-effect-6 text-success opacity-25">
+                            <i class="bi bi-currency-dollar"></i>
+                        </div>
+                        <div class="animation-effect-4 text-success opacity-25">
+                            <i class="bi bi-currency-pound"></i>
+                        </div>
+                        <div class="animation-effect-3 text-success opacity-25">
+                            <i class="bi bi-currency-euro"></i>
+                        </div>
+                    </div><!-- end card -->
+                </div><!-- end col -->
+            </div>
+            <div *ngIf="diarioShow" class="row">
+                <div class="col-xl-6">
+                    <div class="card">
+                        <div class="card-header align-items-center d-flex">
+                            <h4 class="card-title mb-0 flex-grow-1">TOP 5 CONTRIBUYENTES</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive table-card">
+                                <table
+                                    class="table table-borderless table-centered table-hover align-middle table-nowrap mb-0">
+                                    <thead class="text-muted table-light">
+                                        <tr class="text-center">
+                                            <th scope="col">Código</th>
+                                            <th scope="col">Contribuyente</th>
+                                            <th scope="col">Monto</th>
+                                            <th scope="col">Tributos</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let data of dataContribuyente">
+                                            <td class="link-primary">
+                                                {{data.persid}}
+                                            </td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="flex-grow-1">{{data.nomcon}}</div>
+                                                </div>
+                                            </td>
+                                            <td>S/. {{data.monpag | number : '2.0-2'}}</td>
+                                            <td>
+                                                {{data.despag}}
+                                            </td>
+                                        </tr><!-- end tr -->
+
+                                    </tbody><!-- end tbody -->
+                                </table><!-- end table -->
+                            </div>
+                        </div>
+                    </div> <!-- .card-->
+                </div>
+                <div class="col-xl-6">
+                    <div class="card">
+                        <div class="card-header align-items-center d-flex">
+                            <h4 class="card-title mb-0 flex-grow-1">Porcentaje por tributo</h4>
+                        </div>
+                        <div class="card-body">
+                            <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart"
+                                [plotOptions]="chartOptions.plotOptions" [labels]="chartOptions.labels"
+                                [legend]="chartOptions.legend" [colors]="chartOptions.colors"
+                                [responsive]="chartOptions.responsive"></apx-chart>
+                        </div>
+                    </div> <!-- .card-->
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="row">
+                    <div class="col-md-2">
+                        <select *ngIf="tupaShow" class="form-select" [(ngModel)]="p_anypro" (change)="loadTupa()">
+                            <option value="2025">2025</option>
+                            <option value="2024">2024</option>
+                            <option value="2023">2023</option>
+                            <option value="2022">2022</option>
+                            <option value="2021">2021</option>
+                            <option value="2020">2020</option>
+                            <option value="2019">2019</option>
+                        </select>
+                    </div>
+                    <div class="col-md-5"></div>
+                    <!-- <div *ngIf="tupaShow" class="col-md-5 text-end">
+                        <h2>Monto total: {{totalAnual | number : '2.0-2'}}</h2>
+                    </div> -->
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div id="chartContainerTupa" *ngIf="tupaShow" style="height: 600px; width: 100%"></div>
+                            </div>
+                            <div class="col-md-6">
+                                <div id="chartContainerTupaArea" *ngIf="tupaShow && p_arenid > 0"
+                                    style="height: 600px; width: 100%"></div>
+                                <div style="margin: 200px; padding: 20px; border: 1px solid #C0C0C0; border-radius: 15px;text-align: center;color: #C0C0C0;"
+                                    *ngIf="tupaShow && p_arenid == 0">Seleccione una unidad orgánica</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="row">
+                    <div class="col-md-2">
+                        <select *ngIf="multaShow" class="form-select" [(ngModel)]="p_anypromulta"
+                            (change)="loadMultas()">
+                            <option value="2025">2025</option>
+                            <option value="2024">2024</option>
+                            <option value="2023">2023</option>
+                            <option value="2022">2022</option>
+                            <option value="2021">2021</option>
+                            <option value="2020">2020</option>
+                            <option value="2019">2019</option>
+                        </select>
+                    </div>
+                    <div class="col-md-5"></div>
+                    <!-- <div *ngIf="tupaShow" class="col-md-5 text-end">
+                        <h2>Monto total: {{totalAnual | number : '2.0-2'}}</h2>
+                    </div> -->
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div id="chartContainerMulta" *ngIf="multaShow" style="height: 600px; width: 100%">
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div >
+                <div class="row">
+                    <div class="col-md-2">
+                        <label class="form-label">Año:</label>
+                        <select *ngIf="cartVisible" class="form-select" [(ngModel)]="p_anio_anual"
+                            (change)="loadBars()">
+                            <option selected value="2025">2025</option>
+                            <option value="2024">2024</option>
+
+                            <option value="2023">2023</option>
+                            <option value="2022">2022</option>
+                            <option value="2021">2021</option>
+                            <option value="2020">2020</option>
+                            <option value="2019">2019</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label">Tributo:</label>
+                        <select *ngIf="cartVisible" class="form-select" [(ngModel)]="p_tipo"
+                            (change)="loadBars()">
+                            <option selected value="0">Todos</option>
+                            <option value="1">Ordinario</option>
+                            <option value="2">Fiscalizado</option>
+                        </select>
+                    </div>
+                 
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-end">
+                        <div *ngIf="cartVisible" class="col-md-12 text-end">
+                            <h2>Monto total: {{totalAnual | number : '2.0-2'}}</h2>
+                        </div>
+                    </div>
+                </div>
+              
+                <div id="chartContainer" *ngIf="cartVisible" style="height: 600px; width: 100%"></div>
+
+
+
+            </div>
+            <!-- <button *ngIf="calendarVisible" type="button" class="btn btn-soft-primary mb-3" (click)="volver()"><i
+                    class="bx bx-undo"></i> Volver</button> -->
+            <full-calendar *ngIf="calendarVisible" [options]="calendarOptions"></full-calendar>
+        </div>
+    </div>
+</div>
+<ng-template #calendarTupa>
+    <div class="row">
+        <div class="col-lg-12">
+            <b style="color: #3672CC;">INGRESOS DE AREA : {{nombreArea}}</b>
+            <full-calendar *ngIf="showCalendarTupa" [options]="calendarTupaOptions"></full-calendar>
+
+            <div *ngIf="showDetalleTupa" style="margin-bottom: 20%;padding: 50px;">
+                <table class="table table-borderless table-centered table-hover align-middle table-nowrap mb-0">
+                    <thead class="text-muted table-light">
+                        <tr class="text-center">
+                            <th scope="col">Código</th>
+                            <th scope="col">Descripción</th>
+                            <th scope="col">Monto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of detalleArea">
+                            <td>{{data.tupaid}} </td>
+                            <!-- <td>
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-grow-1">{{data.nomcon}}</div>
+                                </div>
+                            </td> -->
+                            <td>{{data.destup}}</td>
+                            <td>S/. {{data.montup | number : '2.0-2'}}</td>
+
+                        </tr><!-- end tr -->
+
+                    </tbody><!-- end tbody -->
+                </table><!-- end table -->
+                <button class="btn btn-soft-primary" (click)="regresarCalendario()">Volver</button>
+            </div>
+
+        </div>
+    </div>
+</ng-template>
+<ng-template #calendarMulta>
+    <div class="row">
+        <div class="col-lg-12">
+            <full-calendar *ngIf="showCalendarMulta" [options]="calendarMultaOptions"></full-calendar>
+        </div>
+    </div>
+</ng-template>
+<ngx-spinner *ngIf="spinnerVisible" bdColor="rgba(0, 0, 0, 0.8)" size="large" color="#fff" type="line-scale-pulse-out"
+    [fullScreen]="false"></ngx-spinner>

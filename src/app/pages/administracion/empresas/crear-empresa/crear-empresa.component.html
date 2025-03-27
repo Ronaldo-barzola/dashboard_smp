@@ -1,0 +1,244 @@
+<div class="main-content">
+    <div class="page-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                        <h4 class="mb-sm-0">Crear Empresa</h4>
+                        <div class="page-title-right">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Inicio</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Administración</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Empresas</a></li>
+                                <li class="breadcrumb-item active">Crear Empresa</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="row">                        
+                        <div class="col-xl-12">
+                            <div class="card card-h-100">
+                                <div class="card-body">
+                                    <div class="text-center pt-3 pb-4 mb-1">
+                                        <img [src]="b64Logo" alt="">
+                                    </div>
+                                    <div class="step-arrow-nav mb-4">
+                                        <ul class="nav nav-pills custom-nav nav-justified" role="tablist">
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link active" id="datgenemp-tab" data-bs-toggle="pill" data-bs-target="#datgenemp" type="button" role="tab" aria-controls="datgenemp" aria-selected="true">Datos de la Empresa</button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="datlogemp-tab" data-bs-toggle="pill" data-bs-target="#datlogemp" type="button" role="tab" aria-controls="datlogemp" aria-selected="false">Logotipo</button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="datotremp-tab" data-bs-toggle="pill" data-bs-target="#datotremp" type="button" role="tab" aria-controls="datotremp" aria-selected="false">Configuración Adicional</button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="finregemp-tab" data-bs-toggle="pill" data-bs-target="#finregemp" type="button" role="tab" aria-controls="finregemp" aria-selected="false">Finish</button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="tab-content">
+                                        <div class="tab-pane fade show active" id="datgenemp" role="tabpanel" aria-labelledby="datgenemp-tab">
+                                            <div>
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <label class="form-label" for="datgenemp-ruc-input">RUC (*)</label>
+                                                            <input type="text" class="form-control" id="datgenemp-ruc-input" [(ngModel)]="ruc">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <label class="form-label" for="datgenemp-razsoc-input">Razón Social (*)</label>
+                                                            <input type="text" class="form-control" id="datgenemp-razsoc-input" [(ngModel)]="razonSocial">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <label class="form-label" for="datgenemp-nomcom-input">Nombre Comercial (*)</label>
+                                                            <input type="text" class="form-control" id="datgenemp-nomcom-input" [(ngModel)]="nombreComercial">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <label class="form-label" for="datgenemp-reprelegal-input">Representante Legal</label>
+                                                            <input type="text" class="form-control" id="datgenemp-reprelegal-input" [(ngModel)]="representanteLegal">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <label class="form-label" for="datgenemp-direccion-input">Dirección (*)</label>
+                                                            <input type="text" class="form-control" id="datgenemp-direccion-input" [(ngModel)]="direccion">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <label class="form-label" for="datgenemp-email-input">Correo Electronico (*)</label>
+                                                            <input type="text" class="form-control" id="datgenemp-email-input" [(ngModel)]="correoElectronico">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <label class="form-label" for="datgenemp-emailnotif-input">Correo Notificaciones</label>
+                                                            <input type="text" class="form-control" id="datgenemp-emailnotif-input" [(ngModel)]="correoNotificaciones">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <label class="form-label" for="datgenemp-telf-input">Teléfono</label>
+                                                            <input type="text" class="form-control" id="datgenemp-telf-input" [(ngModel)]="telefono">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <label class="form-label" for="datgenemp-ususol-input">Usuario SOL</label>
+                                                            <input type="text" class="form-control" id="datgenemp-ususol-input" [(ngModel)]="usuarioSOL">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <label class="form-label" for="datgenemp-psssol-input">Clave SOL</label>
+                                                            <input type="password" class="form-control" id="datgenemp-psssol-input" [(ngModel)]="claveSOL">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="mb-3">
+                                                            <label class="form-label" for="datgenemp-urlweb-input">URL Web</label>
+                                                            <input type="text" class="form-control" id="datgenemp-urlweb-input" [(ngModel)]="urlWeb">
+                                                        </div>
+                                                    </div>
+                                                </div> 
+                                            </div>
+                                            <div class="d-flex align-items-start gap-3 mt-4">
+                                                <button type="button" class="btn btn-primary btn-label right ms-auto nexttab" (click)="wizardChangeTab('datlogemp-tab')" data-nexttab="datlogemp-tab"><i class="ri-arrow-right-line label-icon align-middle fs-16 ms-2"></i> Siguiente</button>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="datlogemp" role="tabpanel" aria-labelledby="datlogemp-tab">
+                                            <div>
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="card">
+                                                            <div class="card-body">
+                                                                <ngx-dropzone (change)="onSelect($event)" [multiple]="false" accept="image/jpeg,image/jpg,image/png">
+                                                                    <ngx-dropzone-label>Arrastra tu archivo aqui, o da click para cargarlo</ngx-dropzone-label>
+                                                                    <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+                                                                        <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                                                                    </ngx-dropzone-preview>
+                                                                </ngx-dropzone>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex align-items-start gap-3 mt-4">
+                                                <button type="button" class="btn btn-light btn-label previestab" (click)="wizardChangeTab('datgenemp-tab')" data-previous="datgenemp-tab"><i class="ri-arrow-left-line label-icon align-middle fs-16 me-2"></i> Regresar</button>
+                                                <button type="button" class="btn btn-primary btn-label right ms-auto nexttab" (click)="wizardChangeTab('datotremp-tab')" data-nexttab="finregemp-tab"><i class="ri-arrow-right-line label-icon align-middle fs-16 ms-2"></i> Siguiente</button>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="datotremp" role="tabpanel" aria-labelledby="datotremp-tab">
+                                            <div>
+                                                <div class="row">
+                                                    <div class="col-lg-4">
+                                                        <label for="datotremp-compdefguia-sel" class="form-label">Comprobante por defecto Guia (*)</label>
+                                                        <select [(ngModel)]="comprobanteDefectoGuia" id="datotremp-compdefguia-sel" class="form-select mb-5" aria-label="Seleccione un Comprobante">
+                                                            <option selected>Seleccione un Comprobante</option>
+                                                            <option *ngFor="let data of dataComprobanteDefectoGuia" [value]="data.gvo_id">{{ data.gvo_descri }}</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label for="datotremp-compdefventa-sel" class="form-label">Comprobante por defecto Venta (*)</label>
+                                                        <select [(ngModel)]="comprobanteDefectoVenta" id="datotremp-compdefventa-sel" class="form-select mb-5" aria-label="Seleccione un Comprobante">
+                                                            <option selected>Seleccione un Comprobante</option>
+                                                            <option *ngFor="let data of dataComprobanteDefectoVenta" [value]="data.tsd_id">{{ data.tsd_descri }}</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <label for="datotremp-tipoimpr-sel" class="form-label">Tipo de Impresión (*)</label>
+                                                        <select [(ngModel)]="tipoImpresion" id="datotremp-tipoimpr-sel" class="form-select mb-5" aria-label="Seleccione un Comprobante">
+                                                            <option selected>Seleccione un Tipo</option>
+                                                            <option *ngFor="let data of dataTipoImpresion" [value]="data.tpr_id">{{ data.tpr_descri }}</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-4">
+                                                        <div class="form-check form-switch mb-5">
+                                                            <input [(ngModel)]="envioAutomaticoSunat" class="form-check-input" type="checkbox" role="switch" id="datotremp-enausunat-chb">
+                                                            <label class="form-check-label" for="datotremp-enausunat-chb">Envio Automático a SUNAT</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="form-check form-switch mb-5">
+                                                            <input [(ngModel)]="precioIncluyeIGV" class="form-check-input" type="checkbox" role="switch" id="datotremp-incigv-chb">
+                                                            <label class="form-check-label" for="datotremp-incigv-chb">¿Precios Incluyen IGV?</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="form-check form-switch mb-5">
+                                                            <input [(ngModel)]="previsualizarPostVenta" class="form-check-input" type="checkbox" role="switch" id="datotremp-prvdespventa-chb">
+                                                            <label class="form-check-label" for="datotremp-prvdespventa-chb">¿Previsualizar despues de venta?</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-4">
+                                                        <div class="form-check form-switch mb-5">
+                                                            <input [(ngModel)]="impresionAutomatica" class="form-check-input" type="checkbox" role="switch" id="datotremp-impauto-chb">
+                                                            <label class="form-check-label" for="datotremp-impauto-chb">Impresión Automática</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="form-check form-switch mb-5">
+                                                            <input [(ngModel)]="clienteDefectoBoleta" class="form-check-input" type="checkbox" role="switch" id="datotremp-clidefbol-chb">
+                                                            <label class="form-check-label" for="datotremp-clidefbol-chb">Cliente por defecto en Boleta</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="form-check form-switch mb-5">
+                                                            <input [(ngModel)]="mostrarRucNotaVenta" class="form-check-input" type="checkbox" role="switch" id="datotremp-rucnotventa-chb">
+                                                            <label class="form-check-label" for="datotremp-rucnotventa-chb">¿Mostrar RUC en Nota de Venta?</label>
+                                                        </div>
+                                                    </div>
+                                                </div>                                                    
+                                            </div>
+                                            <div class="d-flex align-items-start gap-3 mt-4">
+                                                <button type="button" class="btn btn-light btn-label previestab" (click)="wizardChangeTab('datlogemp-tab')" data-previous="datgenemp-tab"><i class="ri-arrow-left-line label-icon align-middle fs-16 me-2"></i> Regresar</button>
+                                                <button type="button" class="btn btn-success btn-label right ms-auto nexttab" (click)="registerCompany();" data-nexttab="finregemp-tab"><i class="ri-arrow-right-line label-icon align-middle fs-16 ms-2"></i>Guardar</button>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="finregemp" role="tabpanel">
+                                            <div class="text-center">
+                                                <div class="avatar-md mt-5 mb-4 mx-auto">
+                                                    <div class="avatar-title bg-light text-success display-4 rounded-circle">
+                                                        <i class="ri-checkbox-circle-fill"></i>
+                                                    </div>
+                                                </div>
+                                                <h5>Exito!</h5>
+                                                <p class="text-muted">La empresa <strong>{{ razonSocial }}</strong> ha sido registrada con exito</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-toast></app-toast>

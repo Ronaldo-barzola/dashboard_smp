@@ -1,0 +1,5 @@
+
+#chartContainer .canvasjs-chart-canvas .canvasjs-column {
+    border-radius: 15%;
+    /* Establece el radio de borde de las barras del gráfico */
+}

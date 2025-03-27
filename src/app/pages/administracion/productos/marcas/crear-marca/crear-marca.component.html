@@ -1,0 +1,88 @@
+<div class="main-content">
+    <div class="page-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                        <h4 class="mb-sm-0">Crear Marca</h4>
+                        <div class="page-title-right">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Inicio</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Administración</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Productos</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Marca</a></li>
+                                <li class="breadcrumb-item active">Crear Marca</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form [formGroup]="formBrand" (ngSubmit)="onSubmit()">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="card card-h-100">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <!-- <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="p_bra_descri" class="form-label">Nombre categoría</label>
+                                                    <input type="text" id="p_bra_descri" class="form-control mb-3" aria-label="p_bra_descri"
+                                                        [(ngModel)]="p_bra_descri" formControlName="p_bra_descri">
+                                                    <div
+                                                        *ngIf="formBrand.get('p_cat_descri')?.invalid && (formBrand.get('p_cat_descri')?.dirty || formBrand.get('p_cat_descri')?.touched)">
+                                                        <div class="text-danger"
+                                                            *ngIf="formBrand.get('p_cat_descri')?.hasError('required')">
+                                                            Campo obligatorio</div>
+                                                    </div>
+                                                </div>
+                                            </div> -->
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="p_cat_id" class="form-label">Nombre
+                                                        categoría</label>
+                                                    <ng-select class="custom-ng-select" [items]="dataCategory"
+                                                        placeholder="Seleccione" bindLabel="cat_descri"
+                                                        bindValue="cat_id" [(ngModel)]="p_cat_id"
+                                                        formControlName="p_cat_id"></ng-select>
+
+                                                    <div
+                                                        *ngIf="formBrand.get('p_cat_id')?.invalid && (formBrand.get('p_cat_id')?.dirty || formBrand.get('p_cat_id')?.touched)">
+                                                        <div class="text-danger"
+                                                            *ngIf="formBrand.get('p_cat_id')?.hasError('required')">
+                                                            Seleccione una opción</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="p_bra_descri" class="form-label">Descripción marca</label>
+                                                    <input type="text" class="form-control" [(ngModel)]="p_bra_descri"
+                                                        formControlName="p_bra_descri">
+                                                    <div
+                                                        *ngIf="formBrand.get('p_bra_descri')?.invalid && (formBrand.get('p_bra_descri')?.dirty || formBrand.get('p_bra_descri')?.touched)">
+                                                        <div class="text-danger"
+                                                            *ngIf="formBrand.get('p_bra_descri')?.hasError('required')">
+                                                            Campo obligatorio</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="text-end">
+                                                    <button type="submit" [disabled]="formBrand.invalid"
+                                                        class="btn btn-primary">Guardar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<app-toast></app-toast>

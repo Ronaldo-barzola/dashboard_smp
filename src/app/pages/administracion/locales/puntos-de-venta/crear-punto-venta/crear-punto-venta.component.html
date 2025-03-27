@@ -1,0 +1,97 @@
+<div class="main-content">
+    <div class="page-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                        <h4 class="mb-sm-0">CREAR PUNTO DE VENTA</h4>
+                        <div class="page-title-right">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Inicio</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Administración</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Clientes</a></li>
+                                <li class="breadcrumb-item active">CREAR PUNTO DE VENTA</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form [formGroup]="formSalePoint" (ngSubmit)="onSubmit()">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="card card-h-100">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="p_psa_descri" class="form-label">Nombre</label>
+                                                    <input type="text" id="p_psa_descri" class="form-control mb-3" aria-label="p_psa_descri"
+                                                        [(ngModel)]="p_psa_descri" formControlName="p_psa_descri">
+                                                    <div
+                                                        *ngIf="formSalePoint.get('p_psa_descri')?.invalid && (formSalePoint.get('p_psa_descri')?.dirty || formSalePoint.get('p_psa_descri')?.touched)">
+                                                        <div class="text-danger"
+                                                            *ngIf="formSalePoint.get('p_psa_descri')?.hasError('required')">
+                                                            Campo obligatorio</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="p_psa_code" class="form-label">Codigo</label>
+                                                    <input type="text" class="form-control" id="p_psa_code"
+                                                        formControlName="p_psa_code" [(ngModel)]="p_psa_code">
+                                                    <div
+                                                        *ngIf="formSalePoint.get('p_psa_code')?.invalid && (formSalePoint.get('p_psa_code')?.dirty || formSalePoint.get('p_psa_code')?.touched)">
+                                                        <div class="text-danger"
+                                                            *ngIf="formSalePoint.get('p_psa_code')?.hasError('required')">
+                                                            Campo obligatorio</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="p_psa_addres" class="form-label">Dirección
+                                                        Social</label>
+                                                    <input type="text" class="form-control" id="p_psa_addres"
+                                                        [(ngModel)]="p_psa_addres" formControlName="p_psa_addres">
+                                                    <div
+                                                        *ngIf="formSalePoint.get('p_psa_addres')?.invalid && (formSalePoint.get('p_psa_addres')?.dirty || formSalePoint.get('p_psa_addres')?.touched)">
+                                                        <div class="text-danger"
+                                                            *ngIf="formSalePoint.get('p_psa_addres')?.hasError('required')">
+                                                            Campo obligatorio</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="p_psa_phonum" class="form-label">Teléfono de contacto</label>
+                                                    <input type="text" class="form-control" id="p_psa_phonum"
+                                                        [(ngModel)]="p_psa_phonum" formControlName="p_psa_phonum">
+                                                    <div
+                                                        *ngIf="formSalePoint.get('p_psa_phonum')?.invalid && (formSalePoint.get('p_psa_phonum')?.dirty || formSalePoint.get('p_psa_phonum')?.touched)">
+                                                        <div class="text-danger"
+                                                            *ngIf="formSalePoint.get('p_psa_phonum')?.hasError('required')">
+                                                            Campo obligatorio</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="text-end">
+                                                    <button type="submit" [disabled]="formSalePoint.invalid"
+                                                        class="btn btn-primary">Guardar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<app-toast></app-toast>

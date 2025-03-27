@@ -1,0 +1,58 @@
+/* You can add global styles to this file, and also import other style files */
+.navbar-header {
+    justify-content: center;
+}
+
+@media (min-width: 768px) {
+
+    .main-content {
+        margin-left: 0px;
+    }
+
+    #page-topbar,
+    .footer {
+        left: 0px
+    }
+}
+
+.pointer {
+    cursor: pointer !important;
+}
+
+/* En styles.css */
+.ng-select-container {
+    border: 1px solid #EFF2F7 !important;
+}
+
+.ng-select .ng-select-container {
+    color: red
+}
+
+.ng-select.ng-select-single .ng-select-container {
+    min-height: 43px;
+}
+
+.selected {
+    border: 1px solid #ECF3FF;
+    border-radius: 15px;
+    background-color: #ECF3FF;
+}
+
+.transparent {
+    background-color: transparent;
+}
+
+.fc-prev-button,
+.fc-next-button,
+.fc-today-button {
+    display: none !important;
+}
+
+.fc-col-header-cell-cushion {
+    text-transform: uppercase;
+}
+
+.top-tagbar {
+    background-color: #628DC2;
+    font-weight: bold;
+}

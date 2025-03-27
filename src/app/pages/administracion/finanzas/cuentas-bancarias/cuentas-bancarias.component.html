@@ -1,0 +1,84 @@
+<div class="main-content">
+    <div class="page-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                        <h4 class="mb-sm-0">Bancos</h4>
+                        <div class="page-title-right">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Inicio</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Administración</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Finanzas</a></li>
+                                <li class="breadcrumb-item active">Bancos</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="card card-h-100">
+                                <div class="card-body">
+                                    <button
+                                        routerLink="/administracion/finanzas/cuentas-bancarias/crear-cuenta-bancaria"
+                                        type="button" class="btn btn-soft-primary btn-label mb-3"><i
+                                            class="bx bx-money label-icon align-middle fs-16 me-2"></i> Crear Cuenta
+                                        Bancaria</button>
+                                    <div class="table-responsive">
+                                        <table class="table table-hover align-middle mb-0">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th scope="col" class="text-center">N°</th>
+                                                    <th scope="col" class="text-center">Banco</th>
+                                                    <th scope="col" class="text-center">Tipo de Cuenta</th>
+                                                    <th scope="col" class="text-center">Titular</th>
+                                                    <th scope="col" class="text-center">N° Cuenta</th>
+                                                    <th scope="col" class="text-center">CCI</th>
+                                                    <th scope="col" class="text-center">Estado</th>
+                                                    <th scope="col" class="text-center">Acciones</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let data of dataAccounts;let idx = index">
+                                                    <td class="text-center">{{idx + 1}}</td>
+                                                    <td class="text-center">{{ data.ban_descri }}</td>
+                                                    <td class="text-center">{{ data.bat_descri }}</td>
+                                                    <td class="text-center">{{ data.bac_owner }}</td>
+                                                    <td class="text-center">{{ data.bac_accnum }}</td>
+                                                    <td class="text-center">{{ data.bac_accinum }}</td>
+                                                    <td class="text-center"
+                                                        class="{{ utils.statusColor(data.bac_active) }}"
+                                                        [innerHTML]="utils.statusText(data.bac_active)"></td>
+
+                                                    <!-- <td class="text-center" class="{{ getCompanyStatusClass(data.com_active) }}" [innerHTML]="getCompanyStatus(data.com_active)"></td> -->
+                                                    <td>
+                                                        <div class="gap-3 flex-wrap text-center">
+                                                            <a *ngIf="data.bac_active" style="cursor: pointer;"
+                                                                (click)="goRoute(data.bac_id)"
+                                                                class="link-primary fs-15 me-2"
+                                                                title="Editar Empresa"><i
+                                                                    class="bx bx-edit-alt"></i></a>
+                                                            <a (click)="deleteAccount(data.bac_id, data.bac_active)"
+                                                                class="{{ utils.getEnableButtonClass(data.bac_active) }} fs-15"
+                                                                style="cursor: pointer;"
+                                                                title="{{ utils.getEnableButtonText(data.bac_active) }} Empresa"><i
+                                                                    class="bx bx-power-off"></i></a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-toast></app-toast>

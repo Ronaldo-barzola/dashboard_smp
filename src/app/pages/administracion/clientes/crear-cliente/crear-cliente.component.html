@@ -1,0 +1,165 @@
+<div class="main-content">
+    <div class="page-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                        <h4 class="mb-sm-0">Crear Cliente</h4>
+                        <div class="page-title-right">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Inicio</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Administración</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Clientes</a></li>
+                                <li class="breadcrumb-item active">Crear Cliente</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form [formGroup]="formClient" (ngSubmit)="onSubmit()">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="card card-h-100">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="p_tid_id" class="form-label">Tipo Documento</label>
+                                                    <select id="p_tid_id" class="form-select mb-3" aria-label="p_tid_id"
+                                                        [(ngModel)]="p_tid_id" formControlName="tidId">
+                                                        <option selected value="">Seleccionar</option>
+                                                        <option *ngFor="let data of dataDocument"
+                                                            value="{{data.tid_id}}">
+                                                            {{data.tid_descri}}</option>
+                                                    </select>
+                                                    <div
+                                                        *ngIf="formClient.get('tidId')?.invalid && (formClient.get('tidId')?.dirty || formClient.get('tidId')?.touched)">
+                                                        <div class="text-danger"
+                                                            *ngIf="formClient.get('tidId')?.hasError('required')">
+                                                            Seleccione una opción</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="p_cli_docnum" class="form-label">Nro Documento</label>
+                                                    <input type="text" class="form-control" id="p_cli_docnum"
+                                                        formControlName="cliDocnum" [(ngModel)]="p_cli_docnum">
+                                                    <div
+                                                        *ngIf="formClient.get('cliDocnum')?.invalid && (formClient.get('cliDocnum')?.dirty || formClient.get('cliDocnum')?.touched)">
+                                                        <div class="text-danger"
+                                                            *ngIf="formClient.get('cliDocnum')?.hasError('required')">
+                                                            Campo obligatorio</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="mb-3">
+                                                    <label for="p_cli_funame" class="form-label">Nombres / Razon
+                                                        Social</label>
+                                                    <input type="text" class="form-control" id="p_cli_funame"
+                                                        [(ngModel)]="p_cli_funame" formControlName="cliFuname">
+                                                    <div
+                                                        *ngIf="formClient.get('cliFuname')?.invalid && (formClient.get('cliFuname')?.dirty || formClient.get('cliFuname')?.touched)">
+                                                        <div class="text-danger"
+                                                            *ngIf="formClient.get('cliFuname')?.hasError('required')">
+                                                            Campo obligatorio</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="mb-3">
+                                                    <label for="p_cli_address" class="form-label">Direccion</label>
+                                                    <input type="text" class="form-control" id="p_cli_address"
+                                                        [(ngModel)]="p_cli_address" formControlName="cliAddress">
+                                                    <div
+                                                        *ngIf="formClient.get('cliAddress')?.invalid && (formClient.get('cliAddress')?.dirty || formClient.get('cliAddress')?.touched)">
+                                                        <div class="text-danger"
+                                                            *ngIf="formClient.get('cliAddress')?.hasError('required')">
+                                                            Campo obligatorio</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="p_cli_email" class="form-label">Correo
+                                                        Electronico</label>
+                                                    <input type="text" class="form-control" id="p_cli_email"
+                                                        formControlName="cliEmail" [(ngModel)]="p_cli_email">
+                                                    <div
+                                                        *ngIf="formClient.get('cliEmail')?.invalid && (formClient.get('cliEmail')?.dirty || formClient.get('cliEmail')?.touched)">
+                                                        <div class="text-danger"
+                                                            *ngIf="formClient.get('cliEmail')?.hasError('required')">
+                                                            Campo obligatorio</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="p_cli_phonum" class="form-label">Telefono</label>
+                                                    <input type="text" class="form-control" id="p_cli_phonum"
+                                                        [(ngModel)]="p_cli_phonum" formControlName="cliPhonum">
+                                                    <div
+                                                        *ngIf="formClient.get('cliPhonum')?.invalid && (formClient.get('cliPhonum')?.dirty || formClient.get('cliPhonum')?.touched)">
+                                                        <div class="text-danger"
+                                                            *ngIf="formClient.get('cliPhonum')?.hasError('required')">
+                                                            Campo obligatorio</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="p_gen_id" class="form-label">Genero</label>
+                                                    <select id="p_gen_id" class="form-select mb-3" aria-label="p_gen_id"
+                                                        [(ngModel)]="p_gen_id" formControlName="genId">
+                                                        <option selected value="">Seleccionar</option>
+                                                        <option *ngFor="let data of dataGender" value="{{data.gen_id}}">
+                                                            {{data.gen_descri}}</option>
+                                                    </select>
+                                                    <div
+                                                        *ngIf="formClient.get('genId')?.invalid && (formClient.get('genId')?.dirty || formClient.get('genId')?.touched)">
+                                                        <div class="text-danger"
+                                                            *ngIf="formClient.get('genId')?.hasError('required')">
+                                                            Seleccione una opción</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="p_cli_datebi" class="form-label">Fec. Nacimiento</label>
+                                                    <input type="date" class="form-control" id="p_cli_datebi"
+                                                        [(ngModel)]="p_cli_datebi" formControlName="cliDatebi">
+                                                    <div
+                                                        *ngIf="formClient.get('cliDatebi')?.invalid && (formClient.get('cliDatebi')?.dirty || formClient.get('cliDatebi')?.touched)">
+                                                        <div class="text-danger"
+                                                            *ngIf="formClient.get('cliDatebi')?.hasError('required')">
+                                                            Campo obligatorio</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- <div class="col-lg-12">
+                                                <div class="mb-3">
+                                                    <label for="cli_codref" class="form-label">Cod. Referido</label>
+                                                    <input type="text" class="form-control" id="cli_codref">
+                                                </div>
+                                            </div> -->
+                                            <div class="col-lg-12">
+                                                <div class="text-end">
+                                                    <button type="submit" [disabled]="formClient.invalid"
+                                                        class="btn btn-primary">Guardar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<app-toast></app-toast>

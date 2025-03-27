@@ -1,0 +1,128 @@
+<div class="main-content">
+    <div class="page-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                        <h4 class="mb-sm-0">Crear Proveedor</h4>
+                        <div class="page-title-right">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Inicio</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Administración</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Proveedores</a></li>
+                                <li class="breadcrumb-item active">Crear Proveedor</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form [formGroup]="formProvider" (ngSubmit)="onSubmit()">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="card card-h-100">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="p_tid_id" class="form-label">Tipo Documento</label>
+                                                    <select id="p_tid_id" class="form-select mb-3" aria-label="p_tid_id"
+                                                        [(ngModel)]="p_tid_id" formControlName="p_tid_id">
+                                                        <option selected value="">Seleccionar</option>
+                                                        <option *ngFor="let data of dataDocument"
+                                                            value="{{data.tid_id}}">
+                                                            {{data.tid_descri}}</option>
+                                                    </select>
+                                                    <div
+                                                        *ngIf="formProvider.get('p_tid_id')?.invalid && (formProvider.get('p_tid_id')?.dirty || formProvider.get('p_tid_id')?.touched)">
+                                                        <div class="text-danger"
+                                                            *ngIf="formProvider.get('p_tid_id')?.hasError('required')">
+                                                            Seleccione una opción</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="p_prv_docnum" class="form-label">Nro Documento</label>
+                                                    <input type="text" class="form-control" id="p_prv_docnum"
+                                                        [(ngModel)]="p_prv_docnum" formControlName="p_prv_docnum">
+                                                    <div
+                                                        *ngIf="formProvider.get('p_prv_docnum')?.invalid && (formProvider.get('p_prv_docnum')?.dirty || formProvider.get('p_prv_docnum')?.touched)">
+                                                        <div class="text-danger"
+                                                            *ngIf="formProvider.get('p_prv_docnum')?.hasError('required')">
+                                                            Campo obligatorio</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="mb-3">
+                                                    <label for="p_prv_funame" class="form-label">Nombres / Razon
+                                                        Social</label>
+                                                    <input type="text" class="form-control" id="p_prv_funame"
+                                                        [(ngModel)]="p_prv_funame" formControlName="p_prv_funame">
+                                                    <div
+                                                        *ngIf="formProvider.get('p_prv_funame')?.invalid && (formProvider.get('p_prv_funame')?.dirty || formProvider.get('p_prv_funame')?.touched)">
+                                                        <div class="text-danger"
+                                                            *ngIf="formProvider.get('p_prv_funame')?.hasError('required')">
+                                                            Campo obligatorio</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="mb-3">
+                                                    <label for="p_prv_addres" class="form-label">Direccion</label>
+                                                    <input type="text" class="form-control" id="p_prv_addres"
+                                                        [(ngModel)]="p_prv_addres" formControlName="p_prv_addres">
+                                                    <div
+                                                        *ngIf="formProvider.get('p_prv_addres')?.invalid && (formProvider.get('p_prv_addres')?.dirty || formProvider.get('p_prv_addres')?.touched)">
+                                                        <div class="text-danger"
+                                                            *ngIf="formProvider.get('p_prv_addres')?.hasError('required')">
+                                                            Campo obligatorio</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="p_prv_email" class="form-label">Correo
+                                                        Electronico</label>
+                                                    <input type="text" class="form-control" id="p_prv_email"
+                                                        [(ngModel)]="p_prv_email" formControlName="p_prv_email">
+                                                    <div
+                                                        *ngIf="formProvider.get('p_prv_email')?.invalid && (formProvider.get('p_prv_email')?.dirty || formProvider.get('p_prv_email')?.touched)">
+                                                        <div class="text-danger"
+                                                            *ngIf="formProvider.get('p_prv_email')?.hasError('required')">
+                                                            Campo obligatorio</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="p_prv_phonum" class="form-label">Telefono</label>
+                                                    <input type="text" class="form-control" id="p_prv_phonum"
+                                                        [(ngModel)]="p_prv_phonum" formControlName="p_prv_phonum">
+                                                    <div
+                                                        *ngIf="formProvider.get('p_prv_phonum')?.invalid && (formProvider.get('p_prv_phonum')?.dirty || formProvider.get('p_prv_phonum')?.touched)">
+                                                        <div class="text-danger"
+                                                            *ngIf="formProvider.get('p_prv_phonum')?.hasError('required')">
+                                                            Campo obligatorio</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="text-end">
+                                                    <button type="submit" class="btn btn-primary" [disabled]="formProvider.invalid">Guardar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<app-toast></app-toast>

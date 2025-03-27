@@ -1,0 +1,92 @@
+<div class="main-content">
+    <div class="page-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                        <h4 class="mb-sm-0">Puntoos de venta</h4>
+                        <div class="page-title-right">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Inicio</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Administración</a></li>
+                                <li class="breadcrumb-item active">Clientes</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="card card-h-100">
+                                <div class="card-body">
+                                    <button routerLink="/administracion/locales/puntos-de-venta/crear-punto-venta" type="button"
+                                        class="btn btn-soft-primary btn-label mb-3"><i
+                                            class="bx bx-user label-icon align-middle fs-16 me-2"></i> Crear
+                                        Punto de venta</button>
+                                    <div class="custom-pagination col-lg-2 mb-3">
+                                        <!-- <select class="form-select " id="p_limit" [(ngModel)]="p_limit"
+                                            (change)="onPageSizeChange($event)">
+                                            <option value="10">10</option>
+                                            <option value="15">15</option>
+                                            <option value="20">20</option>
+                                        </select> -->
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="table table-hover align-middle mb-0">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th scope="col" class="text-center">N°</th>
+                                                    <th scope="col" class="text-center">Nombre</th>
+                                                    <th scope="col" class="text-center">Dirección</th>
+                                                    <th scope="col" class="text-center">Código</th>
+                                                    <th scope="col" class="text-center">Teléfono</th>
+                                                    <th scope="col" class="text-center">Estado</th>
+                                                    <th scope="col" class="text-center">Acciones</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr
+                                                    *ngFor="let data of dataSalePoint | paginate : { itemsPerPage: p_limit, currentPage: p_offset, totalItems: total } ;let idx = index">
+                                                    <td class="text-center">{{idx + 1}}</td>
+                                                    <td class="text-center">{{ data.psa_descri }}</td>
+                                                    <td class="text-center">{{ data.psa_addres }}</td>
+                                                    <td class="text-center">{{ data.psa_code }}</td>
+                                                    <td class="text-center">{{ data.psa_phonum }}</td>
+                                                    <td class="text-center"
+                                                        class="{{ utils.statusColor(data.psa_active) }}"
+                                                        [innerHTML]="utils.statusText(data.psa_active)"></td>
+
+                                                    <td>
+                                                        <div class="gap-3 flex-wrap text-center">
+                                                            <a *ngIf="data.psa_active" style="cursor: pointer;"
+                                                                (click)="goRoute(data.psa_id)"
+                                                                class="link-primary fs-15 me-2"
+                                                                title="Editar Cliente"><i
+                                                                    class="bx bx-edit-alt"></i></a>
+                                                            <a (click)="deleteSalePoint(data.psa_id, data.psa_active)"
+                                                                class="{{ utils.getEnableButtonClass(data.psa_active) }} fs-15"
+                                                                style="cursor: pointer;"
+                                                                title="{{ utils.getEnableButtonText(data.psa_active) }} punto de venta"><i
+                                                                    class="bx bx-power-off"></i></a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <!-- <div class="pagination-container">
+                                            <pagination-controls (pageChange)="changePage($event)">
+                                            </pagination-controls>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-toast></app-toast>
