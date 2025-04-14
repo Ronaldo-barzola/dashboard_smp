@@ -790,7 +790,7 @@ export class DashboardComponent {
   verConceptos() {
     this.dia_ini_concepto = dateFns.format(new Date(), 'yyyy-MM-dd');
     this.dia_fin_concepto = dateFns.format(new Date(), 'yyyy-MM-dd');
-    this.p_anio_concepto = 2024;
+    this.p_anio_concepto = 2025;
     this.conceptos();
     // this.conceptoMonto();
     this.conceptoShow = true;
@@ -804,7 +804,7 @@ export class DashboardComponent {
 
   verTupa() {
 
-    this.p_anypro = 2024;
+    this.p_anypro = 2025;
     this.loadTupa();
     // this.loadTupaArea();
     this.loadBars();
